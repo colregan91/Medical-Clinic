@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+// when you run install maven then it is going to put into the folder what you name grpc files?
+option java_package = "com.medical.clinic.bookingService";// it do not have to match anything in the packages what you have, could be anything
+option java_outer_classname = "bookingProtoService";
+
+package booking;
+
+
+//srevice greeter could call for me bank or medical clinic
+service Booking{
+
+	//say hello unary type
+	rpc askFreeDates(FreeDateRequest2) returns (FreeDateReply2){}
+	//say one more time Hello
+	rpc askFreeDatesAgain(FreeDateRequest2)	returns (FreeDateReply2){}
+
+    //server stream type
+    //i am goint to implement bank operation, customer want to withdraw 40 euro, bank has only 10euro nominals so bank return to the customer 4 time 10 euros
+
+    //rpc
+
+} //end Greeter class
+
+
+
+
+message FreeDateRequest2{
+	string name = 1;
+	// 1 say variable one 2 variable two
+	//string mario =2;
+	//string lugi =3;
+}
+
+message FreeDateReply2{
+	string message = 1;
+}
+
+
+//message to the streemend from server multiple messages
+message WithdrawRequest{
+	int32 account_number =1;
+	int32 amount =2;
+
+
+
+}//end WithdrawRequest
